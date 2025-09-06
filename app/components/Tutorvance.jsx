@@ -8,7 +8,7 @@ import Footer from './ui/Footer';
 import HeroSection from './sections/HeroSection';
 import AdBanner from './sections/AdBanner';
 import FeaturesSection from './sections/FeaturesSection';
-import TutorsSection from './sections/TutorsSection';
+import TutorsSection from './tutors/TutorsSection';
 import PricingSection from './sections/PricingSection';
 import TestimonialsSection from './sections/TestimonialsSection';
 import Modal from './modals/Modal';
