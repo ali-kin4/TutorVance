@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo, lazy, Suspense } from "react";
 
 // Import components
 import GlobalStyles from './styles/GlobalStyles';
@@ -11,12 +11,14 @@ import FeaturesSection from './sections/FeaturesSection';
 import TutorsSection from './sections/TutorsSection';
 import PricingSection from './sections/PricingSection';
 import TestimonialsSection from './sections/TestimonialsSection';
-import Dashboard from './dashboard/Dashboard';
-import StudentOverview from './dashboard/StudentOverview';
-import StudentTools from './dashboard/StudentTools';
-import TutorTools from './dashboard/TutorTools';
 import Modal from './modals/Modal';
 import Icon from './ui/Icon';
+
+// Lazy load dashboard components for better performance
+const Dashboard = lazy(() => import('./dashboard/Dashboard'));
+const StudentOverview = lazy(() => import('./dashboard/StudentOverview'));
+const StudentTools = lazy(() => import('./dashboard/StudentTools'));
+const TutorTools = lazy(() => import('./dashboard/TutorTools'));
 
 // Import data
 import { tutorsData, testimonialsData, users } from '../data/mockData';
@@ -75,11 +77,11 @@ export default function App() {
     const openModal = useCallback((type) => setActiveModal(type), []);
     const closeModal = useCallback(() => setActiveModal(null), []);
 
-    const dashboardChildren = {
+    const dashboardChildren = useMemo(() => ({
         studentOverview: <StudentOverview />,
         studentTools: <StudentTools onOpenModal={openModal} />,
         tutorTools: <TutorTools onOpenModal={openModal} />
-    };
+    }), [openModal]);
 
     return (
         <>
@@ -119,13 +121,22 @@ export default function App() {
                             <TestimonialsSection testimonialsData={testimonialsData} />
                         </>
                     ) : (
-                        <Dashboard 
-                            user={currentUser} 
-                            onLogout={handleLogout} 
-                            onSwitchRole={handleSwitchRole} 
-                            onOpenModal={openModal}
-                            children={dashboardChildren}
-                        />
+                        <Suspense fallback={
+                            <div className="flex items-center justify-center min-h-screen">
+                                <div className="text-center">
+                                    <Icon name="fa-spinner fa-spin" className="text-4xl text-indigo-500 mb-4" />
+                                    <p className="text-gray-600">Loading dashboard...</p>
+                                </div>
+                            </div>
+                        }>
+                            <Dashboard 
+                                user={currentUser} 
+                                onLogout={handleLogout} 
+                                onSwitchRole={handleSwitchRole} 
+                                onOpenModal={openModal}
+                                children={dashboardChildren}
+                            />
+                        </Suspense>
                     )}
                 </main>
 

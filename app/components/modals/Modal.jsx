@@ -30,8 +30,18 @@ const Modal = ({ type, onClose, onLogin }) => {
     useEffect(() => {
       setIsVisible(true);
       document.body.style.overflow = 'hidden';
+      
+      const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+          handleClose();
+        }
+      };
+      
+      document.addEventListener('keydown', handleEscape);
+      
       return () => {
           document.body.style.overflow = 'auto';
+          document.removeEventListener('keydown', handleEscape);
       };
     }, []);
 
@@ -52,8 +62,12 @@ const Modal = ({ type, onClose, onLogin }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center">
-            <div className={`fixed inset-0 bg-black bg-opacity-60 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`} onClick={handleClose}></div>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div 
+                className={`fixed inset-0 bg-black bg-opacity-60 transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`} 
+                onClick={handleClose}
+                aria-hidden="true"
+            ></div>
             <div className={`relative z-10 w-full max-w-md p-4 transition-all duration-300 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}>
                 {renderContent()}
             </div>
