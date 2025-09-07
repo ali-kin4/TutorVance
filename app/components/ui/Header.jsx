@@ -1,18 +1,20 @@
 import Icon from './Icon';
+import { ThemeSwitcher } from './ThemeSwitcher';
 
 const Header = ({ onLoginClick, onSignupClick, onDashboardClick, isLoggedIn }) => (
-    <header className="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50 transition-all duration-300" role="banner">
+    <header className="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50 transition-all duration-300 dark:bg-gray-900/80 dark:border-b dark:border-gray-800" role="banner">
         <nav className="container mx-auto px-6 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
             <a href="#" className="flex items-center space-x-2" aria-label="Tutorvance Home">
                 <Icon name="fa-brain" className="text-3xl text-indigo-600" aria-hidden="true" />
-                <span className="text-2xl font-bold text-gray-800 tracking-wide">Tutorvance</span>
+                <span className="text-2xl font-bold text-gray-800 dark:text-white tracking-wide">Tutorvance</span>
             </a>
-            <div className="hidden md:flex items-center space-x-8 font-semibold text-gray-600">
-                <a href="#features" className="hover:text-indigo-600 transition-colors" aria-label="View features section">Features</a>
-                <a href="#tutors" className="hover:text-indigo-600 transition-colors" aria-label="View tutors section">Tutors</a>
-                <a href="#pricing" className="hover:text-indigo-600 transition-colors" aria-label="View pricing section">Pricing</a>
+            <div className="hidden md:flex items-center space-x-8 font-semibold text-gray-600 dark:text-gray-300">
+                <a href="#features" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" aria-label="View features section">Features</a>
+                <a href="#tutors" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" aria-label="View tutors section">Tutors</a>
+                <a href="#pricing" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" aria-label="View pricing section">Pricing</a>
             </div>
             <div className="flex items-center space-x-4">
+                <ThemeSwitcher />
                 {isLoggedIn ? (
                     <button 
                         onClick={onDashboardClick} 
@@ -25,7 +27,7 @@ const Header = ({ onLoginClick, onSignupClick, onDashboardClick, isLoggedIn }) =
                     <>
                         <button 
                             onClick={onLoginClick} 
-                            className="font-semibold text-gray-600 hover:text-indigo-600 transition-colors"
+                            className="font-semibold text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                             aria-label="Open login modal"
                         >
                             Log In

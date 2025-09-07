@@ -86,7 +86,7 @@ export default function App() {
     return (
         <>
             <GlobalStyles />
-            <div className="antialiased text-gray-800 flex flex-col min-h-screen">
+            <div className="antialiased text-gray-800 dark:text-gray-100 flex flex-col min-h-screen">
                 {page !== 'dashboard' && <Header onLoginClick={() => openModal('login')} onSignupClick={() => openModal('signup')} onDashboardClick={() => setPage('dashboard')} isLoggedIn={isLoggedIn}/>}
                 
                 <main className="flex-grow">

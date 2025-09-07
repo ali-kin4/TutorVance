@@ -12,7 +12,7 @@ const HeroSection = ({ searchQuery, onSearchChange, onSearchSubmit, isLoading = 
                         value={searchQuery}
                         onChange={onSearchChange}
                         placeholder="Search for anything... Math, Physics, Coding..." 
-                        className="w-full py-3 sm:py-4 pl-4 sm:pl-6 pr-24 sm:pr-32 rounded-full text-gray-800 text-base sm:text-lg border-2 border-transparent focus:outline-none focus:border-indigo-400 shadow-2xl" 
+                        className="w-full py-3 sm:py-4 pl-4 sm:pl-6 pr-24 sm:pr-32 rounded-full text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 text-base sm:text-lg border-2 border-transparent focus:outline-none focus:border-indigo-400 shadow-2xl" 
                     />
                     <button 
                         type="submit" 

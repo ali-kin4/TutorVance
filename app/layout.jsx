@@ -1,13 +1,14 @@
+import { ThemeProvider } from "./components/ThemeProvider";
+import "./globals.css";
+
 export const metadata = {
   title: "Tutorvance",
   description: "Find your perfect tutor with AI-powered tools.",
 };
 
-import "./globals.css";
-
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         <link
           rel="stylesheet"
@@ -17,7 +18,16 @@ export default function RootLayout({ children }) {
           referrerPolicy="no-referrer"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

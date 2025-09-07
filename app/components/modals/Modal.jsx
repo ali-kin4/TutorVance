@@ -4,22 +4,22 @@ import FocusModeModal from './FocusModeModal';
 import QuizGeneratorModal from './QuizGeneratorModal';
 
 const LoginModal = ({ onLogin }) => (
-    <div className="bg-white rounded-2xl shadow-2xl p-8 w-full text-center">
-        <h2 className="text-3xl font-bold mb-2">Welcome Back!</h2>
-        <p className="text-gray-600 mb-6">Log in to continue your journey.</p>
-        <input className="w-full p-3 mb-4 border-2 rounded-lg" type="email" placeholder="Email" />
-        <input className="w-full p-3 mb-6 border-2 rounded-lg" type="password" placeholder="Password" />
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 w-full text-center">
+        <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Welcome Back!</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-6">Log in to continue your journey.</p>
+        <input className="w-full p-3 mb-4 border-2 rounded-lg bg-gray-100 dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white" type="email" placeholder="Email" />
+        <input className="w-full p-3 mb-6 border-2 rounded-lg bg-gray-100 dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white" type="password" placeholder="Password" />
         <button onClick={onLogin} className="w-full bg-indigo-600 text-white p-3 rounded-lg font-bold cta-button">Log In</button>
     </div>
 );
 
 const SignupModal = ({ onLogin }) => (
-    <div className="bg-white rounded-2xl shadow-2xl p-8 w-full text-center">
-        <h2 className="text-3xl font-bold mb-2">Join Tutorvance</h2>
-        <p className="text-gray-600 mb-6">Start your learning adventure today.</p>
-        <input className="w-full p-3 mb-4 border-2 rounded-lg" type="text" placeholder="Full Name" />
-        <input className="w-full p-3 mb-4 border-2 rounded-lg" type="email" placeholder="Email" />
-        <input className="w-full p-3 mb-6 border-2 rounded-lg" type="password" placeholder="Password" />
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 w-full text-center">
+        <h2 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">Join Tutorvance</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-6">Start your learning adventure today.</p>
+        <input className="w-full p-3 mb-4 border-2 rounded-lg bg-gray-100 dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white" type="text" placeholder="Full Name" />
+        <input className="w-full p-3 mb-4 border-2 rounded-lg bg-gray-100 dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white" type="email" placeholder="Email" />
+        <input className="w-full p-3 mb-6 border-2 rounded-lg bg-gray-100 dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white" type="password" placeholder="Password" />
         <button onClick={onLogin} className="w-full bg-indigo-600 text-white p-3 rounded-lg font-bold cta-button">Create Account</button>
     </div>
 );

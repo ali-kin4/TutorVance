@@ -62,30 +62,30 @@ const AIChatModal = () => {
     };
 
     return (
-        <div className="bg-white rounded-2xl shadow-2xl w-full flex flex-col h-[70vh]">
-            <div className="p-4 border-b text-center bg-gray-50 rounded-t-2xl"><h3 className="font-bold text-lg">Gemini AI Assistant</h3></div>
-            <div className="flex-grow p-4 overflow-y-auto bg-gray-100 space-y-4">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full flex flex-col h-[70vh]">
+            <div className="p-4 border-b border-gray-200 dark:border-gray-700 text-center bg-gray-50 dark:bg-gray-900 rounded-t-2xl"><h3 className="font-bold text-lg text-gray-900 dark:text-white">Gemini AI Assistant</h3></div>
+            <div className="flex-grow p-4 overflow-y-auto bg-gray-100 dark:bg-gray-700 space-y-4">
                 {messages.map((msg, index) => (
                     <div key={index} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`message-bubble p-3 rounded-lg max-w-xs lg:max-w-md ${msg.sender === 'user' ? 'bg-indigo-500 text-white' : 'bg-white text-gray-800'}`}>
+                        <div className={`message-bubble p-3 rounded-lg max-w-xs lg:max-w-md ${msg.sender === 'user' ? 'bg-indigo-500 text-white' : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-white'}`}>
                            {msg.text}
                         </div>
                     </div>
                 ))}
                 {isLoading && (
                      <div className="flex justify-start">
-                        <div className="p-3 rounded-lg bg-white text-gray-800">
+                        <div className="p-3 rounded-lg bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
                            <Icon name="fa-spinner fa-spin" />
                         </div>
                     </div>
                 )}
                 <div ref={messagesEndRef} />
             </div>
-            <form onSubmit={handleSend} className="p-4 border-t flex items-center space-x-2">
+            <form onSubmit={handleSend} className="p-4 border-t border-gray-200 dark:border-gray-700 flex items-center space-x-2">
                 <input 
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    className="w-full p-3 border-2 rounded-lg" 
+                    className="w-full p-3 border-2 rounded-lg bg-gray-100 dark:bg-gray-600 border-gray-200 dark:border-gray-500 text-gray-900 dark:text-white" 
                     placeholder="Ask me anything..." 
                     disabled={isLoading}
                 />

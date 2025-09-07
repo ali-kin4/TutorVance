@@ -71,15 +71,15 @@ const QuizGeneratorModal = () => {
     };
     
     return (
-        <div className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-lg">
-            <h2 className="text-3xl font-bold mb-4">AI Quiz Generator</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 w-full max-w-lg">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">AI Quiz Generator</h2>
             {!quiz && (
                  <form onSubmit={handleGenerate}>
-                    <p className="text-gray-600 mb-6">Enter a topic or paste text to generate a quiz instantly.</p>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6">Enter a topic or paste text to generate a quiz instantly.</p>
                     <textarea 
                         value={topic}
                         onChange={(e) => setTopic(e.target.value)}
-                        className="w-full p-3 mb-4 border-2 rounded-lg h-40" 
+                        className="w-full p-3 mb-4 border-2 rounded-lg h-40 bg-gray-100 dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white" 
                         placeholder="e.g., 'The basics of cellular respiration' or paste a block of text..."
                         disabled={isLoading}
                     ></textarea>
@@ -91,14 +91,14 @@ const QuizGeneratorModal = () => {
             )}
             {quiz && (
                 <div>
-                    <h3 className="text-2xl font-bold mb-4">Quiz on: <span className="text-purple-600">{topic}</span></h3>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Quiz on: <span className="text-purple-600 dark:text-purple-400">{topic}</span></h3>
                     <div className="space-y-6 max-h-[50vh] overflow-y-auto pr-4">
                         {quiz.map((item, index) => (
-                            <div key={index} className="border-b pb-4">
-                                <p className="font-bold mb-2">{index + 1}. {item.question}</p>
-                                <ul className="space-y-1">
+                            <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-4">
+                                <p className="font-bold mb-2 text-gray-900 dark:text-white">{index + 1}. {item.question}</p>
+                                <ul className="space-y-1 text-gray-800 dark:text-gray-200">
                                     {item.options.map((opt, i) => (
-                                        <li key={i} className={`p-2 rounded ${opt === item.correctAnswer ? 'text-green-700 font-semibold' : ''}`}>
+                                        <li key={i} className={`p-2 rounded ${opt === item.correctAnswer ? 'text-green-700 dark:text-green-400 font-semibold' : ''}`}>
                                             {opt} {opt === item.correctAnswer && <Icon name="fa-check" className="ml-2"/>}
                                         </li>
                                     ))}
